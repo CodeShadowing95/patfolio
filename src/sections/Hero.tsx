@@ -48,8 +48,9 @@ const Hero = () => {
               <h1 className="">into Real Projects</h1>
               <h1 className="">that Deliver Results</h1>
             </div>
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Salut, je suis Patrick NAMEGNI, développeur web et en recherche d'alternance. Travaillons ensemble.
+            <p className="text-white-50 md:text-xl max-w-2xl relative z-10 pointer-events-none">
+              Naviguez dans les méandres de mon savoir-faire, voyez comment ma vision peut enrichir la vôtre.<br/>
+              Je suis <span className="font-bold bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Patrick NAMEGNI</span> et ma valeur, c'est de créer celle des autres.
             </p>
             <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="Let's Go" />
           </div>
