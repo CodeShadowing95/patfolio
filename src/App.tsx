@@ -1,5 +1,6 @@
-import LogoReferences from "./components/LogoReferences"
+import LogoReferences from "./sections/LogoReferences"
 import Navbar from "./components/Navbar"
+import FeatureCards from "./sections/FeatureCards"
 import Hero from "./sections/Hero"
 import Showcase from "./sections/Showcase"
 
@@ -13,6 +14,8 @@ const App = () => {
       <Showcase />
 
       <LogoReferences />
+
+      <FeatureCards />
     </>
   )
 }
