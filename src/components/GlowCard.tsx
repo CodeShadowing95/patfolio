@@ -1,7 +1,6 @@
 import { useRef } from "react"
-import type { expCardsProps } from "../types"
 
-const GlowCard = ({ card, children, index }: { card: expCardsProps, children: React.ReactNode, index: number }) => {
+const GlowCard = ({ card, children, index }: { card: any, children: React.ReactNode, index: number }) => {
   const cardRefs = useRef<HTMLDivElement[]>([]);
 
   const handleMouseMove = (index: number) => (e: MouseEvent) => {
@@ -21,7 +20,7 @@ const GlowCard = ({ card, children, index }: { card: expCardsProps, children: Re
   }
 
   return (
-    <div ref={(el: HTMLDivElement) => { cardRefs.current[index] = el }} onMouseMove={handleMouseMove(index)} className="card card-border timeline-card rounded-xl p-10">
+    <div ref={(el: HTMLDivElement) => { cardRefs.current[index] = el }} onMouseMove={handleMouseMove(index)} className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
       <div className="glow" />
       <div className="flex items-center gap-1 mb-5">
         {Array.from({length: 5}, (_, i) => (
