@@ -5,20 +5,20 @@ import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/Models/contact/COntactExperience";
 
 const Contact = () => {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true); // Show loading state
 
@@ -26,12 +26,12 @@ const Contact = () => {
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        formRef.current,
+        formRef.current as HTMLFormElement,
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
       // Reset form and stop loading
-      setForm({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("EmailJS Error:", error); // Optional: show toast
     } finally {
@@ -60,7 +60,7 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={form.name}
+                    value={formData.name}
                     onChange={handleChange}
                     placeholder="What’s your good name?"
                     required
@@ -73,7 +73,7 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={form.email}
+                    value={formData.email}
                     onChange={handleChange}
                     placeholder="What’s your email address?"
                     required
@@ -85,7 +85,7 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={form.message}
+                    value={formData.message}
                     onChange={handleChange}
                     placeholder="How can I help you?"
                     rows="5"
@@ -93,7 +93,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
